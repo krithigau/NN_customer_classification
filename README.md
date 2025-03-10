@@ -28,37 +28,71 @@ Write your own steps
 
 ## PROGRAM
 
-### Name: 
-### Register Number:
+### Name: KRITHIGA U
+### Register Number:212223240076
 
 ```python
 class PeopleClassifier(nn.Module):
     def __init__(self, input_size):
         super(PeopleClassifier, self).__init__()
-        #Include your code here
-
-
+        self.fc1 = nn.Linear(input_size, 32)
+        self.fc2 = nn.Linear(32, 16)
+        self.fc3 = nn.Linear(16, 8)  
+        self.fc4 = nn.Linear(8, 4)  # Renamed to fc4 to avoid overwriting
 
     def forward(self, x):
-        #Include your code here
-        
+        x = F.relu(self.fc1(x))
+        x = F.relu(self.fc2(x))
+        x = F.relu(self.fc3(x))
+        x = self.fc4(x)  # Changed to fc4 for the final layer
+        return x    
 
 ```
 ```python
 # Initialize the Model, Loss Function, and Optimizer
+model = PeopleClassifier(input_size=X_train.shape[1])
+criterion = nn.CrossEntropyLoss()
+optimizer = optim.Adam(model.parameters(),lr=0.001)
 
+model.eval()
+predictions, actuals = [], []
+with torch.no_grad():
+    for X_batch, y_batch in test_loader:
+        outputs = model(X_batch)
+        _, predicted = torch.max(outputs, 1)
+        predictions.extend(predicted.numpy())
+        actuals.extend(y_batch.numpy())
 
+accuracy = accuracy_score(actuals, predictions)
+conf_matrix = confusion_matrix(actuals, predictions)
+class_report = classification_report(actuals, predictions, target_names=[str(i) for i in label_encoder.classes_])
+print("Name:Krithiga U")
+print("Register No:212223240076")
+print(f'Test Accuracy: {accuracy:.2f}%')
+print("Confusion Matrix:\n", conf_matrix)
+print("Classification Report:\n", class_report)
 ```
 ```python
 def train_model(model, train_loader, criterion, optimizer, epochs):
-    #Include your code here
+    model.train()
+    for epoch in range(epochs):
+        for X_batch,y_batch in train_loader:
+            optimizer.zero_grad()
+            outputs = model(X_batch)
+            loss = criterion(outputs,y_batch)
+            loss.backward()
+            optimizer.step()
+
+    if (epoch + 1) % 10 == 0:
+        print(f'Epoch [{epoch+1}/{epochs}], Loss: {loss.item():.4f}')
 ```
 
 
 
 ## Dataset Information
 
-Include screenshot of the dataset
+![Screenshot 2025-03-10 115224](https://github.com/user-attachments/assets/e483b03e-d96f-4292-ba29-3ec0dd372956)
+
 
 ## OUTPUT
 
