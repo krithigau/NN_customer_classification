@@ -19,12 +19,26 @@ Include the neural network model diagram.
 ## DESIGN STEPS
 
 ### STEP 1:
-Write your own steps
+Understand the classification task and identify input and output variables.
 
 ### STEP 2:
+Gather data, clean it, handle missing values, and split it into training and test sets.
 
 ### STEP 3:
+Normalize/standardize features, encode categorical labels, and reshape data if needed.
 
+### STEP 4:
+
+Choose the number of layers, neurons, and activation functions for your neural network.
+
+### STEP 5:
+Select a loss function (e.g., binary cross-entropy), optimizer (e.g., Adam), and metrics (e.g., accuracy).
+
+### STEP 6:
+Feed training data into the model, run multiple epochs, and monitor the loss and accuracy.
+
+### STEP 7:
+Save the trained model, export it if needed, and deploy it for real-world use.
 
 ## PROGRAM
 
@@ -91,25 +105,21 @@ def train_model(model, train_loader, criterion, optimizer, epochs):
 
 ## Dataset Information
 
-![Screenshot 2025-03-10 115224](https://github.com/user-attachments/assets/e483b03e-d96f-4292-ba29-3ec0dd372956)
-
+![Screenshot 2025-03-17 113945](https://github.com/user-attachments/assets/70cae2cf-e286-4f0c-9eba-30d90f5efa10)
 
 ## OUTPUT
-
-
-
 ### Confusion Matrix
 
-Include confusion matrix here
+![Screenshot 2025-03-17 114105](https://github.com/user-attachments/assets/0bde189e-0619-4a40-adcd-88ede4975483)
 
 ### Classification Report
 
-Include Classification Report here
+![Screenshot 2025-03-17 114417](https://github.com/user-attachments/assets/cca2c8ae-088a-4110-9974-3e2406ae43b7)
 
 
 ### New Sample Data Prediction
 
-Include your sample input and output here
+![Screenshot 2025-03-17 114553](https://github.com/user-attachments/assets/92ff6f65-838e-45a8-a286-4e96395b70a9)
 
 ## RESULT
-Include your result here
+Thus a neural network classification model for the given dataset is executed successfully.
